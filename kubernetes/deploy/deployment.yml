@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haha10
+spec:
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: haha10
+  template:
+    spec:
+      containers:
+        - name: haha10
+          image: fake-image
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 0.1
+          ports:
+            - containerPort: 9001
+              name: http
+          envFrom:
+          - configMapRef:
+              name: haha10-config
+
